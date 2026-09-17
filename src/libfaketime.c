@@ -679,6 +679,7 @@ static bool user_rate_set = false;
 static struct timespec user_per_tick_inc = {0, -1};
 static bool user_per_tick_inc_set = false;
 
+#ifdef FAKE_SLEEP
 static int scale_timeout_milliseconds(int timeout)
 {
   long double scaled_timeout;
@@ -692,6 +693,7 @@ static int scale_timeout_milliseconds(int timeout)
     return 1;
   return (int)scaled_timeout;
 }
+#endif
 enum ft_mode_t {FT_FREEZE, FT_START_AT, FT_NOOP} ft_mode = FT_FREEZE;
 
 /* Time to fake is not provided through FAKETIME env. var. */
